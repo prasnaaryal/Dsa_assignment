@@ -1,54 +1,33 @@
 
 import controller.TaskController;
 import model.JobModel;
-import model.TaskModel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.text.Format;
-
 
 public class CreateJob extends JFrame {
-
-
     JLabel jobLabel;
     JLabel id;
-    JPanel frame;
     JLabel numTask;
     JLabel profit;
-
     JLabel time;
-
-
     JTextField txtjob;
     JTextField txtId;
     JTextField txtNumTask;
     JTextField txtprofit;
     JTextField txtTime;
-
     JButton CreateJob;
     JButton addTak;
     JButton back;
-    JButton jobpage;
-
-
-
-
-
     public CreateJob() {
         initialize();
         uIInitialize();
-
-
     }
-
-
 
     public void initialize () {
 //        screen size
-        setTitle("Add Task");
+        setTitle("Create Job");
         setSize(1400, 900 );
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
@@ -56,16 +35,8 @@ public class CreateJob extends JFrame {
         setLocationRelativeTo(null);
         setBackground(new Color(0xEADCBB));
         getContentPane();
-
-        frame =new JPanel();
-        frame.setBounds(300,50,550,700);
-        frame.setBackground(Color.white);
-        add(frame);
-
     }
     public void uIInitialize(){
-
-
         back = new JButton("Back");
         back.setBounds(0, 10, 70, 20);
         back.setFont(new Font("Times New Roman", Font.BOLD, 10));
@@ -81,91 +52,69 @@ public class CreateJob extends JFrame {
         });
 
         id = new JLabel("Job Id");
-        id.setFont(new Font("San Serif", Font.PLAIN, 20));
-        id.setBounds(350, 100, 100, 25);
-
+        id.setFont(new Font("San Serif", Font.PLAIN, 40));
+        id.setBounds(400, 120, 200, 40);
         id.setForeground(Color.black);
         add(id);
-        add(frame);
 
-//        text feild
         txtId = new JTextField();
-        txtId.setBounds(450, 100, 80, 25);
+        txtId.setBounds(700, 120, 200, 40);
         add(txtId);
-        add(frame);
 
         time = new JLabel("End Time");
-        time.setFont(new Font("San Serif", Font.PLAIN, 20));
-        time.setBounds(350, 150, 100, 25);
+        time.setFont(new Font("San Serif", Font.PLAIN, 40));
+        time.setBounds(400, 180, 200, 40);
         time.setForeground(Color.black);
         add(time);
-        add(frame);
 
         txtTime = new JTextField();
-        txtTime.setBounds(450, 150, 80, 25);
+        txtTime.setBounds(700, 180, 200, 40);
         add(txtTime);
-        add(frame);
-
 
         profit=new JLabel("Profit");
-        profit.setFont(new Font("San Serif", Font.PLAIN, 20));
-        profit.setBounds(600, 200, 100, 25);
+        profit.setFont(new Font("San Serif", Font.PLAIN, 40));
+        profit.setBounds(400, 240, 200, 40);
         profit.setForeground(Color.black);
         add(profit);
-        add(frame);
 
         txtprofit = new JTextField();
-        txtprofit.setBounds(700, 200, 50, 30);
+        txtprofit.setBounds(700, 240, 200, 40);
         add(txtprofit);
-        add(frame);
 
         numTask = new JLabel("Task no.");
-        numTask.setFont(new Font("San Serif", Font.PLAIN, 20));
-        numTask.setBounds(350, 200, 200, 30);
+        numTask.setFont(new Font("San Serif", Font.PLAIN, 40));
+        numTask.setBounds(400, 300, 200, 40);
         numTask.setForeground(Color.black);
         add(numTask);
-        add(frame);
 
         txtNumTask = new JTextField();
-        txtNumTask.setBounds(450, 200, 80, 25);
+        txtNumTask.setBounds(700, 300, 200, 40);
         add(txtNumTask);
-        add(frame);
 
         jobLabel = new JLabel("Work name");
-        jobLabel.setFont(new Font("San Serif", Font.PLAIN, 30));
-        jobLabel.setBounds(350, 280, 400, 40);
+        jobLabel.setFont(new Font("San Serif", Font.PLAIN, 40));
+        jobLabel.setBounds(400, 360, 300, 40);
         jobLabel.setForeground(Color.black);
         add(jobLabel);
-        add(frame);
-
-
-
 
         txtjob = new JTextField();
-        txtjob.setBounds(350, 320, 450, 45);
+        txtjob.setBounds(700, 360, 450, 45);
         add(txtjob);
-        add(frame);
-
 
         CreateJob = new JButton("Submit");
-        CreateJob.setBounds(450,400,300,45);
+        CreateJob.setBounds(450,500,300,45);
         CreateJob.setForeground(Color.white);
-//        CreateJob.setFocusPainted(false);
         CreateJob.setBackground(new Color(0x0000));
         CreateJob.setFont(new Font("San Serif", Font.PLAIN, 25));
         add(CreateJob);
-        add(frame);
 
         addTak = new JButton("Add Task");
-        addTak.setBounds(450,500,300,45);
+        addTak.setBounds(450,600,300,45);
         addTak.setForeground(Color.white);
         addTak.setFocusPainted(false);
         addTak.setBackground(new Color(0x000));
         addTak.setFont(new Font("San Serif", Font.PLAIN, 25));
         add(addTak);
-        add(frame);
-
-
 
         CreateJob.addActionListener(new ActionListener() {
             @Override
@@ -182,9 +131,6 @@ public class CreateJob extends JFrame {
                 dispose();
             }
         });
-
-
-
     }
 
     private void addJob(){
@@ -199,30 +145,15 @@ public class CreateJob extends JFrame {
         }else{
             JobModel jobModel = new JobModel(id, jobName,numOfTask,dead,profit);
             TaskController taskController = new TaskController();
-
             int insert = taskController.addJob(jobModel);
-
-
             if(insert>0){
-
                 JOptionPane.showMessageDialog(null, "Job Created Successfully");
-
             }
-
             else{
                 JOptionPane.showMessageDialog(null, "Failed to create job");
             }
         }
-
     }
-
-
-
-
-
-
-
-
     public static void main(String[] args) {
         new CreateJob().setVisible(true);
     }

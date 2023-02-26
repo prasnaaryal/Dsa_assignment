@@ -3,6 +3,7 @@ package question1;
 import java.util.*;
 
 class Quesone {
+//    defining integer
     int id;
     int time;
     int cost;

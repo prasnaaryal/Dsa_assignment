@@ -107,7 +107,7 @@ public class QuessixA {
     class MyComparator implements Comparator<QuessixANode> {
         public int compare(QuessixA.QuessixANode x, QuessixA.QuessixANode y)
         {
-            //used to sort the character in the sequence of r
+            // sorting  the character in the sequence of r
             return x.data - y.data;
         }}
 

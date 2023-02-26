@@ -1,10 +1,17 @@
 package question3;
 
 public class quetionthreeb {
-        public boolean solve(String str, String pattern, int i, int j ){
-            if(i<0&&j<0){
+    // A recursive function to check if a string matches a given pattern
+
+    public boolean solve(String str, String pattern, int i, int j ){
+        // base case: if both strings have been processed, return true
+
+        if(i<0&&j<0){
                 return true;
-            }if(i>=0&&j<0){
+            }
+        // if the pattern string has been processed but not the input string,
+        // return false as we can't match the remaining input characters to anything
+        if(i>=0&&j<0){
                 return  false;
             }
             if(i<0&&j>=0){
@@ -21,6 +28,8 @@ public class quetionthreeb {
             else if(pattern.charAt(j)=='@'){
                 return (solve(str,pattern,i-1,j)||solve(str,pattern,i,j-1));
             }
+            // if none of the above conditions are true, return false as there is no match
+
 
             else{
                 return false;

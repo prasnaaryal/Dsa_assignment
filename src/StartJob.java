@@ -20,7 +20,7 @@ public class StartJob  extends JFrame {
     int count = 0;
     TaskController taskController = new TaskController();
     JButton back;
-    JPanel frame;
+//    JPanel frame;
     JLabel jobs;
     JLabel selectJob;
     JButton jButton;
@@ -37,16 +37,9 @@ public class StartJob  extends JFrame {
         setLocationRelativeTo(null);
         setBackground(new Color(0x9F7298));
         getContentPane();
-
-        frame =new JPanel();
-        frame.setBounds(300,50,550,550);
-        frame.setBackground(Color.white);
-        add(frame);
-
         initilize();
     }
     void initilize(){
-
 
         back = new JButton("Back");
         back.setBounds(0, 10, 70, 20);
@@ -62,20 +55,18 @@ public class StartJob  extends JFrame {
             }
         });
 
-
-
         selectJob = new JLabel("Select Job");
         selectJob.setFont(new Font("San Serif", Font.PLAIN, 20));
         selectJob.setBounds(350, 200, 200, 20);
         selectJob.setForeground(Color.black);
         add(selectJob);
-        add(frame);
+//        add(frame);
 
         jobs = new JLabel("Job Here");
         jobs.setFont(new Font("Roboto", Font.PLAIN, 20));
         jobs.setBounds(520,200,200,30);
         add(jobs);
-        add(frame);
+//        add(frame);
         t=new ScrollableLabel(text);
         t.setFont(new Font("San Serif", Font.PLAIN, 15));
         jtf=new JScrollPane(t);
@@ -90,7 +81,7 @@ public class StartJob  extends JFrame {
         jButton.setBackground(new Color(0x030307));
         jButton.setFont(new Font("San Serif", Font.PLAIN, 25));
         add(jButton);
-        add(frame);
+//        add(frame);
 
         stop = new JButton("Job Completed");
         stop.setBounds(450,500,300,45);
@@ -99,7 +90,7 @@ public class StartJob  extends JFrame {
         stop.setBackground(new Color(0x0A0A1E));
         stop.setFont(new Font("San Serif", Font.PLAIN, 25));
         add(stop);
-        add(frame);
+//        add(frame);
 
         jButton.addActionListener(new ActionListener() {
             @Override
@@ -203,7 +194,7 @@ public class StartJob  extends JFrame {
         ArrayList<Calendar> TIMES = new ArrayList<>();
         for(int timeTo=0; timeTo<allTime.length;timeTo++){
             Calendar date = Calendar.getInstance();
-            date.set(Calendar.HOUR_OF_DAY,12);
+            date.set(Calendar.HOUR_OF_DAY,4);
             date.set(Calendar.MINUTE,allTime[timeTo]);
             date.set(Calendar.SECOND,0);
             TIMES.add(date);
@@ -223,13 +214,6 @@ public class StartJob  extends JFrame {
             };
             timer.schedule(task,TIMES.get(i).getTime());
         }
-
-
-
-
-
-
-
     }
 
     public static void main(String[] args) {

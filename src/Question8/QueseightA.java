@@ -5,18 +5,10 @@ import java.util.Stack;
 class QueseightA {
 
 
-    /*Question 8
-    a)
-    Given 2D matrix of 1 and 0s. Using stack, find maximum area of square made by 0s.
-    INPUT: 1 0 1 0 0
-    0 1 1 1 1
-    0 0 0 0 1
-    0 0 0 1 1
-    0 1 0 1 1
-    OUTPUT: 4
-    */
 
-        public static int findMaximumSquareArea(int[][] matrix) {
+    // Method to find the maximum square area of 0s in a matrix
+
+        public static int findMaxSquareArea(int[][] matrix) {
             int maximumArea = 0;
             int row = matrix.length;
             int column = matrix[0].length;
@@ -26,13 +18,18 @@ class QueseightA {
             for (int i = 0; i < column; i++) {
                 heights[0][i] = matrix[0][i];
                 for (int j = 1; j < row; j++) {
+                    // If there is a 1 in the cell, set the height to 0
+
                     if (matrix[j][i] == 1) {
                         heights[j][i] = 0;
                     } else {
+                        // Otherwise, increment the height by 1
+
                         heights[j][i] = heights[j-1][i] + 1;
                     }
                 }
             }
+            // Calculate the maximum area of the square of 0s for each row in the matrix
 
             for (int i = 0; i < row; i++) {
                 int area = maxAreaInHistogram(heights[i]);
@@ -42,8 +39,10 @@ class QueseightA {
             }
             return maximumArea;
         }
+    // Method to find the maximum area of a histogram
 
-        public static int maxAreaInHistogram(int[] heights) {
+
+    public static int maxAreaInHistogram(int[] heights) {
             int maximumArea = 0;
             int n = heights.length;
             Stack<Integer> stack = new Stack<>();
@@ -64,13 +63,17 @@ class QueseightA {
             return maximumArea;
         }
         public static void main(String[] args) {
+            // Define the matrix
+
             int[][] matrix = {
                     {1, 0, 1, 0, 0},
                     {0, 1, 1, 1, 1},
                     {0, 0, 0, 0, 1},
                     {0, 0, 0, 1, 1},
                     {0, 1, 0, 1, 1}};
-            int maximumArea = findMaximumSquareArea(matrix);
+            // Find the maximum square area of 0s in the matrix
+
+            int maximumArea = findMaxSquareArea(matrix);
             System.out.println("Max square area of 0s  is: " + maximumArea);
         }
     }

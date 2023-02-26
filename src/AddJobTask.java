@@ -1,16 +1,13 @@
 import controller.TaskController;
 import model.JobTaskModel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class AddJobTask extends JFrame{
-    JPanel frame;
     JButton back;
     JLabel jobid;
     JTextField jobtxtId;
@@ -29,12 +26,6 @@ public class AddJobTask extends JFrame{
         setLocationRelativeTo(null);
         setBackground(new Color(0x0E0E0E));
         getContentPane();
-
-        frame =new JPanel();
-        frame.setBounds(300,50,550,550);
-        frame.setBackground(Color.pink);
-        add(frame);
-
         initilize();
     }
 
@@ -64,69 +55,41 @@ public class AddJobTask extends JFrame{
 
             System.out.println(idtaskList.get(i));
             idOfTaskList[i]=idtaskList.get(i).toString();
-
-
         }
 
         System.out.println(Arrays.toString(idOfTaskList));
 
-//        id = new JLabel("Job Id");
-//        id.setFont(new Font("Roboto", Font.PLAIN, 30));
-//        id.setBounds(420, 120, 100, 25);
-//        id.setForeground(Color.black);
-//        add(id);
-//        add(frame);
-
         jobid = new JLabel("Job Id");
         jobid.setFont(new Font("Roboto", Font.PLAIN, 30));
-        jobid.setBounds(350, 100, 100, 25);
+        jobid.setBounds(400, 120, 200, 40);
         jobid.setForeground(Color.black);
         add(jobid);
-        add(frame);
+//        add(frame)
 
         jobtxtId = new JTextField();
-        jobtxtId.setBounds(350, 140, 120, 30);
+        jobtxtId.setBounds(700, 120, 200, 40);
         add(jobtxtId);
-        add(frame);
-
-//        currTask = new JLabel("Current Task");
-//        currTask.setFont(new Font("Roboto", Font.PLAIN, 20));
-//        currTask.setBounds(350, 200, 200, 20);
-//        currTask.setForeground(Color.black);
-//        add(currTask);
-//        add(frame);
 
         runningTask = new JLabel("Current Task");
-        runningTask.setFont(new Font("Roboto", Font.PLAIN, 20));
-        runningTask.setBounds(350, 200, 200, 20);
+        runningTask.setFont(new Font("Roboto", Font.PLAIN, 30));
+        runningTask.setBounds(400, 200, 300, 40);
         runningTask.setForeground(Color.black);
         add(runningTask);
-        add(frame);
-
 
         runtask = new JComboBox(idOfTaskList);
         runtask.setFont(new Font("Roboto", Font.PLAIN, 20));
-        runtask.setBounds(350,250,200,30);
+        runtask.setBounds(700, 200, 300, 40);
         add(runtask);
 
-//        depTask = new JLabel("Dependent Task");
-//        depTask.setFont(new Font("Roboto", Font.PLAIN, 20));
-//        depTask.setBounds(350, 300, 200, 25);
-//        depTask.setForeground(Color.black);
-//        add(depTask);
-//        add(frame);
-
         dependentTask = new JLabel("Dependent Task");
-        dependentTask.setFont(new Font("Roboto", Font.PLAIN, 20));
-        dependentTask.setBounds(350, 300, 200, 25);
+        dependentTask.setFont(new Font("Roboto", Font.PLAIN, 30));
+        dependentTask.setBounds(350, 300, 300, 40);
         dependentTask.setForeground(Color.black);
         add(dependentTask);
-        add(frame);
-
 
         dependent = new JComboBox(idOfTaskList);
         dependent.setFont(new Font("Roboto", Font.PLAIN, 20));
-        dependent.setBounds(350,350,200,30);
+        dependent.setBounds(700, 300, 300, 40);
         add(dependent);
 
         addTak = new JButton("Add Task");
@@ -136,7 +99,6 @@ public class AddJobTask extends JFrame{
         addTak.setBackground(new Color(0x07070A));
         addTak.setFont(new Font("Roboto", Font.PLAIN, 25));
         add(addTak);
-        add(frame);
 
         addTak = new JButton("start job");
         addTak.setBounds(450,500,300,45);
@@ -145,11 +107,6 @@ public class AddJobTask extends JFrame{
         addTak.setBackground(new Color(0x07070A));
         addTak.setFont(new Font("Roboto", Font.PLAIN, 25));
         add(addTak);
-        add(frame);
-//
-
-
-
 
         addTak.addActionListener(new ActionListener() {
             @Override
@@ -174,24 +131,11 @@ public class AddJobTask extends JFrame{
                     }else{
                         JOptionPane.showMessageDialog(null, "Filed to add Task");
                     }
-
-
                 }
             }
         });
-
     }
-
-
-
-
-
     public static void main(String[] args) {
         new AddJobTask().setVisible(true);
     }
-
-
-
-
-
 }
